@@ -3,7 +3,6 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
 def get_unique_filename(base_name, extension=".png"):
-    """파일 중복 시 뒤에 숫자를 붙여 중복을 피하는 함수 (예: 가.png, 가_1.png, 가_2.png)"""
     filename = f"{base_name}{extension}"
     counter = 1
     
@@ -21,7 +20,7 @@ def generate_char_image(char, font_path, size=200):
     try:
         font = ImageFont.truetype(font_path, font_size)
     except OSError:
-        print("폰트 경로를 찾을 수 없다.")
+        print("폰트 경로 이상함")
         return
 
     bbox = draw.textbbox((0, 0), char, font=font)
@@ -41,8 +40,8 @@ def generate_char_image(char, font_path, size=200):
 
 if __name__ == "__main__":
     target_char = input("한글 한 글자 입력: ").strip()
-    
-    font_file = r"C:\Users\hryan\Desktop\Jalnan2\Maplestory OTF Light.otf"
+    #여기다가 경로 적기 vvvv 파이썬 특성 상 앞에 r 지우지 말것
+    font_file = r"경로" 
     
     if target_char:
         generate_char_image(target_char[0], font_file)
